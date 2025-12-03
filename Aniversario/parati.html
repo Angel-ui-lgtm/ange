@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Historia | Momentos Especiales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="audio-controls">
+        <audio id="myAudio" loop>
+            <source src="music/Audio.aac" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        <button onclick="togglePlayPause()">🎶</button>
+        <p>Audio Controls</p>
+    </div>
+
+    <div id="main-content-area">
+
+        <header>
+            <nav>
+                <a href="index.html">Inicio</a>
+                <a href="parati.html">Galería</a>
+            </nav>
+        </header>
+
+        <section id="nuestra-historia">
+            <h2 class="title-pacifico" style="color: var(--kitty-red); margin-bottom: 20px; font-size: 3em;">Momentos
+                que atesoramos</h2>
+
+            <div class="card-grid">
+
+                <div class="aniversary-card">
+                    <div class="kitty-bow-card">🎀</div>
+                    <div class="card-inner">
+                        <img src="img/WhatsApp Image 2025-12-02 at 8.20.23 PM (1).jpeg" alt="Foto de Aniversario 1">
+                        <p class="anniversary-label">Anniversary</p>
+                        <p class="love-text">
+                            "Donde hay amor, hay vida. ¡Gracias por cada risa, mi vida!"
+                        </p>
+                    </div>
+                </div>
+
+                <div class="aniversary-card">
+                    <div class="kitty-bow-card">🎀</div>
+                    <div class="card-inner">
+                        <img src="img/WhatsApp Image 2025-12-02 at 8.20.23 PM.jpeg" alt="Foto de Aniversario 2">
+                        <p class="anniversary-label">Anniversary</p>
+                        <p class="love-text">
+                            "Contigo, cada día es una nueva aventura. Mi corazón siempre te elige."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="aniversary-card">
+                    <div class="kitty-bow-card">🎀</div>
+                    <div class="card-inner">
+                        <img src="img/WhatsApp Image 2025-12-02 at 8.53.52 PM.jpeg" alt="Foto de Aniversario 3">
+                        <p class="anniversary-label">Anniversary</p>
+                        <p class="love-text">
+                            "¡Por un futuro lleno de más momentos increíbles juntos, te amo!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <a href="mensaje.html" class="kitty-button secondary-button">
+                    Ver Mensaje Final Sorpresa 💌
+                </a>
+            </div>
+        </section>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,518 @@
+/* --- VARIABLES DE COLOR --- */
+:root {
+    --kitty-pink-light: #fbe6ec;
+    --kitty-red: #ff3366;
+    --kitty-white: #ffffff;
+    --text-color-dark: #333333;
+    --text-color-light: #555555;
+    --font-script: 'Pacifico', cursive;
+    --font-body: 'Arial', sans-serif;
+}
+
+/* --- ESTILOS GENERALES Y FUENTES --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 0;
+    background-color: var(--kitty-white);
+    color: var(--text-color-dark);
+    text-align: center;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+/* --- CONTENEDOR PRINCIPAL PARA SPA (SINGLE PAGE APPLICATION) --- */
+/* VITAL: El único elemento que JS reemplaza para mantener la música. */
+#main-content-area {
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* --- ENCABEZADO Y NAVEGACIÓN --- */
+header {
+    background-color: var(--kitty-red);
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: right;
+    padding-right: 20px;
+}
+
+nav a {
+    color: var(--kitty-white);
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: 500;
+    font-size: 0.9em;
+    padding: 5px 10px;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* --- SECCIÓN DE INICIO (BANNER ROSA) --- */
+#inicio {
+    background-color: var(--kitty-pink-light);
+    padding: 50px 20px;
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-content {
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    gap: 40px;
+    position: relative;
+}
+
+.text-side {
+    max-width: 50%;
+}
+
+.title-pacifico {
+    font-family: var(--font-script);
+    color: var(--kitty-red);
+    font-size: 5em;
+    line-height: 0.8;
+}
+
+.title-nuestra-historia {
+    color: var(--kitty-red);
+    font-size: 2em;
+    font-weight: normal;
+    text-transform: lowercase;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    font-size: 1.1em;
+    color: var(--text-color-light);
+    margin-bottom: 30px;
+}
+
+/* --- ESTILOS PARA LA IMAGEN (Hello Kitty) --- */
+.kitty-illustration-container {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: bounceIn 1.5s ease-out;
+}
+
+.kitty-illustration-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.heart {
+    position: absolute;
+    top: 0;
+    right: 50px;
+    font-size: 3em;
+    color: var(--kitty-red);
+    z-index: 10;
+    animation: wiggle 2s infinite ease-in-out;
+}
+
+/* --- BOTONES --- */
+.kitty-button {
+    background-color: var(--kitty-red);
+    color: var(--kitty-white);
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.kitty-button:hover {
+    background-color: #ff5c8a;
+    transform: scale(1.05);
+}
+
+.secondary-button {
+    margin-top: 20px;
+}
+
+/* --- SECCIÓN DE FOTOS (GALERÍA) --- */
+#nuestra-historia {
+    padding: 60px 20px;
+    background-color: var(--kitty-white);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.card-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 40px;
+}
+
+.aniversary-card {
+    background-color: var(--kitty-white);
+    border: 3px solid var(--kitty-red);
+    border-radius: 10px;
+    width: 30%;
+    min-width: 280px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-top: 20px;
+    /* La opacidad la controla JavaScript para la animación secuencial */
+    opacity: 0;
+}
+
+/* El lazo rojo arriba de cada tarjeta */
+.kitty-bow-card {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--kitty-white);
+    padding: 0 10px;
+    font-size: 1.5em;
+    color: var(--kitty-red);
+}
+
+.card-inner {
+    padding: 10px 15px 20px;
+}
+
+.aniversary-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.anniversary-label {
+    color: var(--kitty-red);
+    font-weight: bold;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.love-text {
+    font-size: 0.9em;
+    color: var(--text-color-light);
+    font-style: italic;
+    min-height: 60px;
+}
+
+.button-container {
+    width: 100%;
+    padding-top: 40px;
+    text-align: center;
+}
+
+/* --- SECCIÓN DE MENSAJE FINAL --- */
+#final {
+    padding: 80px 20px;
+    background-color: var(--kitty-red);
+    color: var(--kitty-white);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 900px;
+    width: 100%;
+    margin: 0 auto;
+    gap: 20px;
+}
+
+.message-content {
+    flex-grow: 1;
+    max-width: 600px;
+    text-align: center;
+    z-index: 10;
+    padding: 20px;
+}
+
+.kitty-message-img {
+    width: 100px;
+    /* Tamaño CORREGIDO para las Hello Kittys */
+    height: auto;
+    object-fit: contain;
+    animation: fadeInScale 1s ease-out forwards;
+    /* Opacidad 1: Hacemos que sea visible por defecto. */
+    opacity: 1;
+    z-index: 5;
+}
+
+/* --- CLASES DE AUDIO Y ANIMACIONES --- */
+#audio-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid var(--kitty-red);
+    padding: 8px 12px;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#audio-controls button {
+    background: var(--kitty-red);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#audio-controls button:hover {
+    background-color: #d83d7a;
+}
+
+#audio-controls p {
+    font-size: 0.7em;
+    color: var(--text-color-dark);
+    margin-top: 5px;
+}
+
+/* ======================================== */
+/* --- DEFINICIÓN DE KEYFRAMES --- */
+/* ======================================== */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s forwards;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeInCard {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale3d(.3, .3, .3);
+    }
+
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    50% {
+        transform: rotate(5deg);
+    }
+
+    75% {
+        transform: rotate(-3deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+
+/* ======================================================== */
+/* 📱 MEDIA QUERIES (ADAPTABILIDAD PARA MÓVILES Y TABLETAS) */
+/* ======================================================== */
+
+/* 1. ESTILOS PARA TABLETAS (Máximo 992px) */
+@media (max-width: 992px) {
+
+    /* Ajustes generales */
+    .title-pacifico {
+        font-size: 4em;
+    }
+
+    .kitty-illustration-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    /* Galería: Permitir dos tarjetas por fila */
+    .aniversary-card {
+        width: 45%;
+    }
+}
+
+
+/* 2. ESTILOS PARA MÓVILES (Máximo 600px) */
+@media (max-width: 600px) {
+
+    /* Sección Inicio: Apilar elementos */
+    #inicio {
+        padding-top: 20px;
+    }
+
+    .banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .text-side {
+        max-width: 100%;
+        padding-top: 0;
+    }
+
+    .title-pacifico {
+        font-size: 3em;
+    }
+
+    .kitty-illustration-container {
+        width: 200px;
+        height: 200px;
+        margin: 20px auto;
+    }
+
+    .heart {
+        right: 10px;
+    }
+
+    /* Galería: Una tarjeta por fila */
+    .card-grid {
+        gap: 20px;
+    }
+
+    .aniversary-card {
+        width: 100%;
+        min-width: unset;
+    }
+
+    /* Mensaje Final: Apilar elementos */
+    #final {
+        padding: 50px 10px;
+    }
+
+    .message-container {
+        flex-direction: column;
+        /* Apilar las Hello Kitties y el mensaje */
+        gap: 10px;
+    }
+
+    .message-content h2 {
+        font-size: 2.5em !important;
+    }
+
+    .kitty-message-img {
+        width: 200px;
+        /* Reducir las imágenes de Kitty en el mensaje final */
+        margin: 5px auto;
+    }
+
+    /* Navegación */
+    nav {
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    nav a {
+        margin: 0 5px;
+        font-size: 0.8em;
+    }
+}
